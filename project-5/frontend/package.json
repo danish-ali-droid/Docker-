@@ -1,0 +1,13 @@
+{
+  "name": "three-tier-frontend",
+  "version": "1.0.0",
+  "description": "Static frontend for three-tier app",
+  "scripts": {
+    "start": "serve -p 3000"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
+  "author": "",
+  "license": "MIT"
+}

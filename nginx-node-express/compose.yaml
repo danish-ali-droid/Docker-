@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: my_nginx
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - my-network
+  web:
+    build:
+      context: ./node
+    container_name: my_node_app
+    ports:
+      - '3000:3000'
+    networks:
+      - my-network
+networks:
+    my-network:
+      driver: bridge

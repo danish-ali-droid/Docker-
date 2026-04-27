@@ -1,0 +1,51 @@
+services:
+  redis:
+    container_name: redis
+    image: redis
+  db:
+    container_name: db_container
+    image: postgres:alpine
+    env_file:
+      - .env
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_HOST: ${DB_HOST}
+      POSTGRES_USER: ${USER}
+      POSTGRES_DB: ${DB_NAME}
+    healthcheck:
+      test: pg_isready -U postgres -d ${DB_NAME}    
+      retries: 5
+      interval: 5s
+      timeout: 10s 
+    volumes:
+      - postgres_data:/var/lib/postgresql
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+  backend:
+    container_name: backend_container
+    build:
+      context: ./backend
+    ports:
+      - ${PORT}
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      db:
+       condition: service_healthy
+    
+  web:
+    container_name: frontend_container
+    build:
+      context: ./frontend
+  nginx:
+    container_name: nginx_container
+    image: nginx
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+       - backend
+volumes:
+ postgres_data:  
