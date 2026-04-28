@@ -1,73 +1,91 @@
-# 🐳 Docker: From Core Architecture to Cloud Orchestration
-![Docker Banner](https://img.shields.io/badge/Docker-Infrastructure-blue?style=for-the-badge&logo=docker&logoColor=white)
-![Orchestration](https://img.shields.io/badge/Orchestration-Compose-orange?style=for-the-badge&logo=docker)
-![Security](https://img.shields.io/badge/Security-Hardening-red?style=for-the-badge&logo=docker)
+# 🐳 Docker Project Collection
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Compose](https://img.shields.io/badge/docker--compose-%2315AABF.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Containerization](https://img.shields.io/badge/Containerization-Modern-green?style=for-the-badge&logo=containers)
 
-Welcome to my comprehensive Docker repository. This project is a fusion of deep theoretical research and hands-on industrial implementation. It documents the complete lifecycle of containerized applications—from kernel-level isolation to multi-service orchestration.
-
----
-
-## 🏛️ Deep-Dive: Docker Engine & Architecture
-Understanding how Docker interacts with the Linux Kernel is fundamental to my DevOps workflow.
-
-
-
-* **Kernel Isolation:** Implementation of **Namespaces** (PID, Net, Mount) for complete process isolation.
-* **Resource Management:** Utilizing **Cgroups** to enforce hardware limits (CPU, Memory, I/O).
-* **Runtime Components:** Exploring the interaction between `dockerd`, `containerd`, and `runc`.
-* **Storage Strategy:** Implementing **Volumes** for production persistence and **Bind Mounts** for rapid development.
+A practical Docker workspace with multiple containerized application examples and supporting architecture documentation.
 
 ---
 
-## 🚀 Orchestrated Projects (Three-Tier Stacks)
-I have built several real-world environments to demonstrate microservices communication:
+## 📌 What this repository contains
+This repository is organized into sample Docker projects and learning assets:
 
-### 🔹 [Nginx-Node-MariaDB Stack](./nginx-node-mariadb)
-A robust **Production-Grade Architecture**.
-* **Nginx:** Functions as a Reverse Proxy and Edge Gateway.
-* **Node.js:** Handles backend business logic and API routing.
-* **MariaDB:** Relational database with volume-backed persistence for student data.
-
-### 🔹 [Nginx-Node-Express Setup](./nginx-node-express)
-An optimized **Two-Tier Architecture**.
-* Focuses on **Inter-container networking** and minimized image sizing using **Alpine-based** base images.
+- `nginx-node-mariadb/` — Three-tier stack: Nginx reverse proxy, Node.js backend, MariaDB database.
+- `nginx-node-express/` — Two-tier stack: Nginx proxy and Node.js Express app.
+- `nginx-node-redis-postgres/` — Extended stack with Redis cache and PostgreSQL data store.
+- `flask-redis/` — Flask application integrated with Redis.
+- `Lamp-Stack-project/` — LAMP stack example.
+- `my-dijengo-project/` — Django-based application project.
+- PDF learning guides covering Docker architecture, lifecycle, networking, storage, security, and image optimization.
 
 ---
 
-## 📂 Technical Directory Structure
+## 🚧 Why this repo is useful
+This root README provides a quick access point for:
+
+- Reviewing containerization patterns.
+- Running practical multi-service examples.
+- Inspecting Docker Compose orchestration.
+- Learning Docker architecture through companion PDFs.
+
+---
+
+## 📁 Folder overview
 ```text
 Docker/
-├── nginx-node-mariadb/      # 3-Tier Enterprise Microservices
-├── nginx-node-express/      # 2-Tier High-Performance Proxy-App
-├── Architecture_Core.pdf    # Engine internals & Namespaces
-├── Architecture_Core.pdf    # Engine internals & Namespaces
-├── Container_Lifecycle.pdf  # Networking & State Management
-├── Image_Optimization.pdf   # Multi-stage builds & .dockerignore
-│── Security_Registry.pdf    # Non-root users & Vulnerability scans
-└── README.md                # Master Documentation
+├── flask-redis/                # Flask + Redis containerized example
+├── Lamp-Stack-project/         # LAMP stack sample
+├── my-dijengo-project/         # Django sample project
+├── nginx-node-express/         # Nginx + Node.js Express stack
+├── nginx-node-mariadb/         # Nginx + Node.js + MariaDB stack
+├── nginx-node-redis-postgres/  # Nginx + Node.js + Redis + PostgreSQL stack
+├── Docker Architecture & Core.pdf
+├── Docker Container Lifecycle & Networking.pdf
+├── Docker Image Management & Optimization.pdf
+├── Docker Orchestration & Composition.pdf
+├── Docker Security & Registry.pdf
+├── Docker Storage & Data Persistence.pdf
+└── README.md
 ```
----
-## 🛠️ Advanced DevOps Competencies
 
-- **Image Hardening:** Writing multi-stage Dockerfiles to reduce the attack surface and image footprint.
-- **Service Discovery:** Utilizing Docker's internal DNS and user-defined bridge networks.
-- **Resource Limiting:** Enforcing memory reservations and CPU quotas to prevent "noisy neighbor" issues.
-- **Non-Root Execution:** Configuring containers to run as specific UID/GIDs for enhanced security.
 ---
 
-## 🚀 Deployment Command Center
-Launch any of the managed stacks with a single command:
+## ▶️ Quick start
+Choose the stack you want to run, then use Docker Compose from that folder.
+
+Example for `nginx-node-mariadb`:
 ```bash
-# Clone the repository
-git clone [https://github.com/danish-ali-droid/DevOps.git](https://github.com/danish-ali-droid/DevOps.git)
-
-# Navigate to the target project
-cd Docker/nginx-node-mariadb
-
-# Deploy the infrastructure
+cd nginx-node-mariadb
 sudo docker-compose up -d --build
-
-# Inspect running services
 sudo docker-compose ps
 ```
+
+For `nginx-node-express`:
+```bash
+cd nginx-node-express
+sudo docker-compose up -d --build
+```
+
+Then open:
+```text
+http://localhost
+```
+
 ---
+
+## 🧭 Notes
+- Ensure Docker Engine and Docker Compose are installed.
+- Use `.env` files where provided to keep credentials out of version control.
+- Inspect service definitions in each `docker-compose.yml` for ports, networks, and volumes.
+
+---
+
+## 📘 Learn more
+Open the PDF files in this repository to explore:
+
+- Docker architecture and core runtime components
+- Container lifecycle and networking
+- Image build optimization and multi-stage builds
+- Orchestration patterns and Compose best practices
+- Security hardening and registry management
+- Storage persistence and volume usage
