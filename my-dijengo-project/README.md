@@ -1,6 +1,7 @@
+
 # 🚀 My Django Project
 
-<div align="center">
+<div>
 
 ![Django](https://img.shields.io/badge/Django-6.0.4-092E20?style=for-the-badge&logo=django)
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python)
@@ -85,14 +86,14 @@ Before you begin, ensure you have the following installed:
 
 ### 1. Clone the Repository
 
-\`\`\`bash
+```bash
 git clone https://github.com/yourusername/my-django-project.git
 cd my-django-project
-\`\`\`
+```
 
 ### 2. Create Virtual Environment
 
-\`\`\`bash
+```bash
 # Create virtual environment
 python3.12 -m venv venv
 
@@ -101,28 +102,28 @@ python3.12 -m venv venv
 source venv/bin/activate
 # On Windows:
 venv\Scripts\activate
-\`\`\`
+```
 
 ### 3. Install Dependencies
 
-\`\`\`bash
+```bash
 pip install --upgrade pip
 pip install -r requirments.txt
-\`\`\`
+```
 
 > **Note**: Fix the typo in requirements file name (currently \`requirments.txt\`, should be \`requirements.txt\`)
 
 ### 4. Run Migrations
 
-\`\`\`bash
+```bash
 python manage.py migrate
-\`\`\`
+```
 
 ### 5. Create Superuser (Optional)
 
-\`\`\`bash
+```bash
 python manage.py createsuperuser
-\`\`\`
+```
 
 Follow the prompts to create an admin account.
 
@@ -132,9 +133,9 @@ Follow the prompts to create an admin account.
 
 ### Start Development Server
 
-\`\`\`bash
+```bash
 python manage.py runserver
-\`\`\`
+```
 
 The application will be available at:
 - **Local**: \`http://localhost:8000\`
@@ -157,45 +158,23 @@ Navigate to \`http://localhost:8000/admin\` and log in with your superuser crede
 
 #### 1. Build Docker Image
 
-\`\`\`bash
+```bash
 docker build -t my-django-project:latest .
-\`\`\`
+```
 
 #### 2. Run Docker Container
 
-\`\`\`bash
+```bash
 docker run -p 8000:8000 my-django-project:latest
-\`\`\`
+```
 
-#### Using Docker Compose (Recommended)
-
-Create a \`docker-compose.yml\` file:
-
-\`\`\`yaml
-version: '3.8'
-
-services:
-  web:
-    build: .
-    ports:
-      - "8000:8000"
-    environment:
-      - DEBUG=1
-      - ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
-    volumes:
-      - .:/app
-    command: python manage.py runserver 0.0.0.0:8000
-\`\`\`
-
-Then run:
-
-\`\`\`bash
+```bash
 docker-compose up -d
-\`\`\`
+```
 
 ### Useful Docker Commands
 
-\`\`\`bash
+```bash
 # View running containers
 docker ps
 
@@ -210,13 +189,13 @@ docker stop <container_id>
 
 # Remove container
 docker rm <container_id>
-\`\`\`
+```
 
 ---
 
 ## 📂 Project Structure
 
-\`\`\`
+```text
 my-django-project/
 ├── core/                       # Main Django application
 │   ├── __init__.py
@@ -229,50 +208,26 @@ my-django-project/
 ├── Dockerfile                  # Docker configuration
 ├── requirments.txt             # Python dependencies
 └── README.md                   # This file
-\`\`\`
+```
 
 ---
 
-## ⚙️ Configuration
 
-### Django Settings
-
-Edit \`core/settings.py\` to customize:
-
-\`\`\`python
-# Allowed hosts
-ALLOWED_HOSTS = ['192.168.11.114', 'localhost', '127.0.0.1']
-
-# Debug mode (disable in production!)
-DEBUG = True
-
-# Database configuration
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# Static files
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-\`\`\`
 
 ### Environment Variables
 
 Create a \`.env\` file in the project root:
 
-\`\`\`env
+```env
 DEBUG=False
 SECRET_KEY=your-secret-key-here
 ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com
 DATABASE_URL=postgresql://user:password@localhost/dbname
-\`\`\`
+```
 
 ---
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -283,11 +238,11 @@ DATABASE_URL=postgresql://user:password@localhost/dbname
 
 ---
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Issue: Port 8000 already in use
 
-\`\`\`bash
+```bash
 # Kill process using port 8000
 # On Linux/macOS:
 lsof -ti:8000 | xargs kill -9
@@ -295,32 +250,32 @@ lsof -ti:8000 | xargs kill -9
 # On Windows:
 netstat -ano | findstr :8000
 taskkill /PID <PID> /F
-\`\`\`
+```
 
 ### Issue: Module not found errors
 
-\`\`\`bash
+```bash
 # Reinstall dependencies
 pip install --no-cache-dir -r requirments.txt
-\`\`\`
+```
 
 ### Issue: Database migration errors
 
-\`\`\`bash
+```bash
 # Reset migrations
 python manage.py migrate --fake-initial
 
 # Recreate database
 rm db.sqlite3
 python manage.py migrate
-\`\`\`
+```
 
 ### Issue: Static files not loading
 
-\`\`\`bash
+```bash
 # Collect static files
 python manage.py collectstatic --noinput
-\`\`\`
+```
 
 ---
 
@@ -334,7 +289,3 @@ python manage.py collectstatic --noinput
 
 ---
 
-<div align="center">
-
-
-</div>
