@@ -1,5 +1,9 @@
 # Nginx Node Redis PostgreSQL
 
+![Docker Compose Banner](https://img.shields.io/badge/Docker%20Compose-Container%20Stack-blue?style=for-the-badge&logo=docker)
+![Node.js Banner](https://img.shields.io/badge/Express%20API-Node.js-green?style=for-the-badge&logo=node.js)
+![Database Banner](https://img.shields.io/badge/PostgreSQL%20%2B%20Redis-Data%20Layer-blueviolet?style=for-the-badge&logo=postgresql&logoColor=white)
+
 A containerized three-tier application with a static frontend, Express backend, Redis cache, PostgreSQL database, and Nginx reverse proxy.
 
 ---
